@@ -147,7 +147,8 @@ public class HVAC {
 
         System.out.println("1. Add service call for furnace");
         System.out.println("2. Add service call for AC unit");
-        System.out.println("3. Quit");
+        System.out.println("3. Add service call for water heater");
+        System.out.println("4. Quit");
 
         int choice = getPositiveIntInput();
 
@@ -157,7 +158,6 @@ public class HVAC {
 
                 System.out.println("Enter address of furnace");
                 String address = getStringInput();
-
                 System.out.println("Enter description of problem");
                 String problem = getStringInput();
 
@@ -192,17 +192,34 @@ public class HVAC {
 
             }
             case 3: {
+
+                System.out.println("Enter address of water heater");
+                String address = getStringInput();
+                System.out.println("Enter description of problem");
+                String problem = getStringInput();
+                System.out.println("Enter age of water heater, rounded to nearest year");
+                int age = getPositiveIntInput();
+
+                WaterHeater heater = new WaterHeater(address, new Date(), problem, age);
+                todayServiceCalls.add(heater);
+                System.out.println("Added the following water heater to list of calls:\n" + heater);
+                break;
+
+            }
+
+            case 4: {
                 return;
 
             }
+
             default: {
                 System.out.println("Enter a number from the menu choices");
+
             }
 
         }
 
     }
-
 
     //Validation methods
 
@@ -251,4 +268,3 @@ public class HVAC {
 
     }
 }
-
